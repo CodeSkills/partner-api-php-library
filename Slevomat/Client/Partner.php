@@ -115,7 +115,7 @@ class Slevomat_Client_Partner
 	 * @return Slevomat_Client_Response_Abstract
 	 * @throws RuntimeException When the request to the API could not be performed
 	 */
-	protected function performRequest($action, array $parameters)
+	public function performRequest($action, array $parameters)
 	{
 		$request = $this->prepareRequest();
 
@@ -135,7 +135,7 @@ class Slevomat_Client_Partner
 	 *
 	 * @return resource.
 	 */
-	protected function prepareRequest()
+	public function prepareRequest()
 	{
 		static $request;
 
@@ -165,7 +165,7 @@ class Slevomat_Client_Partner
 	 * @param array $parameters Additional HTTP parameters
 	 * @return string
 	 */
-	protected function prepareRequestUrl($action, array $parameters)
+	public function prepareRequestUrl($action, array $parameters)
 	{
 		return sprintf(self::$apiUrl, $this->server) . '/' . urlencode($action) . '?' . http_build_query($parameters);
 	}
@@ -175,7 +175,7 @@ class Slevomat_Client_Partner
 	 *
 	 * @throws RuntimeException When a required PHP extension is not present.
 	 */
-	protected function checkRequirements()
+	public function checkRequirements()
 	{
 		if (version_compare(PHP_VERSION, '5.2', '<')) {
 			throw new RuntimeException('PHP version 5.2 or newer is required.');
